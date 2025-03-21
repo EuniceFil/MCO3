@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Register Page</title>
+	<link rel="icon" type="image/png" href="/pictures/logo.png">
+    <link rel="stylesheet" href="/css/design.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&display=swap">
+</head>
+
+<body>
+<!-- Header -->
+<header>
+	<div class="logoname">
+		<img class="logo" src="/pictures/logo.png" alt="AnimoMeet Logo">
+		<h1 class="sitetext">AnimoMeet</h1>
+	</div>
+</header>
+
+<main class="signinbg">
+	<div class="signinpanel">
+		<div id="regcontent">
+			<h2>Register</h2>
+
+			<!-- Flash messages for errors -->
+            {{#if error_msg}}
+                <p class="error">{{error_msg}}</p>
+            {{/if}}
+
+            <p>By continuing, you agree to our User Agreement and acknowledge that you understand the Privacy Policy.</p>
+
+			<!-- Updated form with Handlebars syntax -->
+			<form action="/register" method="POST">
+				<input type="checkbox" id="agreement" name="agreement" value="true">
+				<label for="agreement">I agree to the User Agreement and Privacy Policy</label><br><br>
+
+				<input class="tbox" type="email" id="email" name="email" value="{{formData.email}}" placeholder="Email"><br>
+                <input class="tbox" type="password" id="password" name="password" placeholder="Password"><br>
+				<input class="tbox" type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password"><br>
+
+				<button type="submit">Register</button>
+			</form>
+
+			<p>Have an account? <a href="/login">Log in</a></p>
+		</div>
+	</div>
+</main>
+</body>
+</html>

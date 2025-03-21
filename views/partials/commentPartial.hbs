@@ -1,0 +1,48 @@
+<div class="comment">
+    <div class="postheader">
+        <img class="profilepic" src="{{this.user_id.user_pfp}}" alt="Profile Picture">
+        <div class="userinfo">
+            <a href="/profile/{{this.user_id._id}}">
+                <span class="username">{{this.user_id.user_name}}</span>
+            </a> |
+            <a href="/view-comment/{{this._id}}">
+            <span class="posttime">{{timeFormat this.create_time}}</span>
+            </a>
+        </div>
+    </div>
+
+    <a href="/view-comment/{{this._id}}">
+    <div class="posttext">{{this.comment_content}}</div>
+    </a>
+
+    <div class="postactions">
+        <form action="/commentvote/{{this._id}}" method="POST">
+            <button type="submit" name="vote" value="1" class="postbutton">
+                <span class="upvotes">{{this.upvotes}}</span> | Up Vote
+            </button>
+            <button type="submit" name="vote" value="-1" class="postbutton">
+                <span class="downvotes">{{this.downvotes}}</span> | Down Vote
+            </button>
+        </form>
+
+        <button class="postbutton" onclick="toggleComments(this)">Comments</button>
+    </div>
+
+    <!-- Reply Form -->
+    <div class="postcomsec" style="display: none;">
+        <form class="replyform" action="/submit-comment" method="POST">
+            <input type="hidden" name="parent_id" value="{{this._id}}">
+            <input class="cbox" type="text" name="textbox" placeholder="What's on your mind?">
+            <button class="submitcomment" type="submit">Comment</button>
+        </form>
+
+        <!-- Nested Replies -->
+        {{#if this.comments.length}}
+            <div class="commentsec">
+                {{#each this.comments}}
+                    {{> commentPartial}}
+                {{/each}}
+            </div>
+        {{/if}}
+    </div>
+</div>

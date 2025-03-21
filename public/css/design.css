@@ -1,0 +1,874 @@
+/* Global designs */
+body {
+	font-family: 'League Spartan';
+	font-weight: 700;
+	
+	overflow: hidden;
+	margin: 0;
+}
+
+main {
+	height: calc(100vh - 74px);
+}
+
+a {
+	text-decoration: none;
+}
+
+button {
+	font-family: 'League Spartan';
+	font-weight: 700;
+}
+
+textarea {
+	font-family: 'League Spartan';
+}
+
+/* Styles for Header (LogoName, Search Bar, Options) */
+header {
+	background-color: #00713D;
+	border-bottom-style: solid;
+	border-bottom-color: #0C4F47;
+	box-sizing: border-box;
+	height: 90px;
+	padding: 10px;
+
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+}
+
+/* Styles for LogoName */
+.logoname {
+	display: flex;
+	column-gap: 10px;
+}	
+
+.logo {
+	height: 50px;
+	margin-top: 7px;
+	margin-left: 5px;
+}
+
+.sitetext {
+	color: white;
+}
+
+/* Styles for Search Bar */
+.searchbar {
+	--padding: 14px;
+	
+	width: max-content;
+	display:flex;
+	align-items: center;
+	padding: var(--padding);
+	border-radius: 28px;
+	background: #f6f6f6;
+	text-align: center;
+	margin-top: 7px;
+}
+
+.searchbar:hover {
+	background: #d9d9d9;
+}
+
+.searchinput{
+	font-size: 16px;
+	color: #33333;
+	margin-left: var(--padding);
+	outline: none;
+	border: none;
+	background: transparent;
+	width: 500px;
+}
+
+.searchinput::placeholder, .searchicon {
+	color: rgba(0, 0, 0, 0.25);
+}
+
+/* Styles for Options */
+.options {
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	column-gap: 15px;
+}
+
+.create {
+	background-color: #0C4F47;
+	font-size: 30px;
+	color: white;
+	padding: 14px;
+	border-radius: 28px;
+}
+
+.create:hover {
+	background-color: #11695e;
+}
+
+.notif, .profile {
+	width: 50px;
+}
+
+.notifdd {
+	position: relative;
+	display: inline-block;
+}
+
+.notiftext {
+	border-style: solid;
+	background-color: white;
+	
+	display: none;
+	position: absolute;
+	width: 350px;
+	top: 100%;
+	right: 0;
+}
+
+.notifdd:hover .notiftext {
+	display: flex;
+	flex-direction: column;
+}
+
+.notiftext a {
+	padding: 15px;
+	
+	color: black;
+	text-align: center;
+}
+
+.notiftext a:hover {
+	background-color: #D3D3D3;
+}
+
+.profdd {
+	position: relative;
+	display: inline-block;
+}
+
+.profoptions {
+	border-style: solid;
+	background-color: white;
+	
+	display: none;
+	position: absolute;
+	width: 100px;
+	top: 100%;
+	right: 0;
+}
+
+.profdd:hover .profoptions {
+	display: flex;
+	flex-direction: column;
+}
+
+.profoptions a {
+	padding: 15px;
+	
+	color: black;
+	text-align: center;
+}
+
+.profoptions a:hover {
+	background-color: #D3D3D3;
+}
+
+/* Styles for Side Panel (Navigation and Community) */
+aside {
+	background-color: #00713D;
+	display: inline-block;
+	width: 250px;
+	height: 100vh;
+	float: left;
+}
+
+/* Style for Navigation */
+.navitext {
+	color: white;
+	text-align: center;
+	font-size: 15px;
+}
+
+.navcontainer {	
+	border-bottom-style: solid;
+	border-bottom-color: #0C4F47;
+	padding-bottom: 25px;
+	
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	row-gap: 15px;
+}
+
+.navcontainer .navbox {
+	background-color: #0C4F47;
+	box-sizing: border-box;
+	border-radius: 15px;
+	width: 225px;
+	height: 50px;
+	padding: 10px;
+	outline: none;
+	border: none;
+	
+	text-align: center;
+	font-size: 30px;
+	color: white;
+	
+	display: flex;
+	justify-content: left;
+	align-items: center;
+}
+
+.navbox img {
+	width: 20%;
+	margin-right: 15px;
+	margin-left: 10px;
+}
+
+.navbox div {
+	margin-top: 5px;
+}
+
+.navcontainer .navbox:hover {
+	background-color: #11695e;
+}
+
+/* Styles for Community */
+.communities {
+    overflow-y: auto;
+    max-height: calc(100vh - 90px - 250px);
+}
+
+.commtext {
+	color: white;
+	text-align: center;
+	font-size: 15px;
+}
+
+.commcontainer {		
+	display: flex;
+	flex-direction: column;
+	align-items: left;
+}
+
+.commcontainer .commbox{
+	text-align: center;
+	font-size: 15px;
+	color: white;
+	
+	display: flex;
+	justify-content: left;
+	align-items: center;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+.commcontainer .commbox:hover{
+	background-color: rgba(0, 0, 0, 0.5);
+}
+
+.commbox img {
+	border-style: solid;
+	border-radius: 50%;
+	margin-left: 25px;
+	margin-right: 10px;
+	
+	height: 30px;
+	width: 30px;
+}
+
+.commbox div {
+	font-weight: 500;
+	margin-top: 5px;
+}
+
+/* Styles for Main Content (Main, Trending, Explore) */
+.feedpage {
+	overflow: scroll;
+}
+
+/* Styles for Main, Trending*/
+.maincontainer {
+	display: flex;
+	flex-direction: column;
+}
+
+.maincontainer .mainbox {
+	border-bottom-style: solid;
+	border-bottom-color: #9FA0A0;
+	
+	padding: 50px;
+	padding-left: 100px;
+	padding-right: 100px;
+}
+
+.postheader {
+	display: flex;
+	align-items: center;
+	column-gap: 10px;
+}
+
+.profilepic {
+	border: solid;
+	border-radius: 50%;
+	color: black;
+	height: 40px;
+}
+
+.postheader .userinfo{
+	margin-top: 7px;
+}
+
+.postheader .userinfo a {
+	color: black;
+}
+
+.postcontent .posttext {
+	font-weight: 500;
+}
+
+.postcontent h2 {
+	color: black;
+}
+
+.postactions {
+	display: flex;
+	gap: 10px;
+	flex-wrap: wrap;
+	align-items: center;
+}
+
+.postactions .postbutton {
+	border-radius: 15px;
+	border-style: none;
+	background-color: #0C4F47;
+	color: white;
+	padding: 10px;
+	width: auto;
+	min-width: 100px;
+	text-align: center;
+}
+
+/*.postactions .postbutton {*/
+/*	border-radius: 15px;*/
+/*	border-style: none;*/
+/*	background-color: #0C4F47;*/
+/*	color: white;*/
+/*	padding: 10px;*/
+/*	width: 120px;*/
+/*}*/
+
+.postactions .postbutton:hover {
+	background-color: #11695e;
+}
+
+.postactions .actionbutton {
+	border-radius: 15px;
+	border-style: none;
+	background-color: #616365;
+	color: white;
+	padding: 10px;
+	width: 90px;
+}
+
+.postactions .actionbutton:hover {
+	background-color: #7F8285;
+}
+
+.trending {
+	font-size: 50px;
+	text-align: center;
+	margin: 50px;
+	margin-bottom: 0px;
+}
+
+/* Styles for Explore Page */
+.explore {
+	font-size: 50px;
+	text-align: center;
+	margin: 50px;
+	margin-bottom: 20px;
+}
+
+.expcontainer {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+	column-gap: 50px;
+	row-gap: 30px;
+	padding-bottom: 50px;
+}
+
+.expcontainer .expbox {
+	border-bottom-style: solid;
+	border-bottom-color: #9FA0A0;
+	border-radius: 15px;
+	box-sizing: border-box;
+	
+	padding-left: 20px;
+	padding-right: 20px;
+	padding-bottom: 20px;
+	padding-top: 10px;
+	
+	width: 500px;
+	height: 220px;
+	border: solid;
+	
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.expbox .commpicname {
+	display: flex;
+	align-items: center;
+	column-gap: 20px;
+}
+
+.expbox .commpic {
+	border: solid;
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+}
+
+.expbox .commdesc {
+	font-weight: 500;
+}
+
+.expbox .joinbutton {
+	background-color: #0C4F47;
+	text-align: center;
+	color: white;
+	
+	padding: 10px;
+	border-radius: 15px;
+}
+
+.expbox .joinbutton:hover {
+	background-color: #11695e;
+}
+
+/* Styles for View Community */
+.viewcomm {
+	padding: 50px;
+	
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	column-gap: 20px;
+}
+
+.viewcomm .commpic{
+	border: solid;
+	width: 100px;
+	height: 100px;
+	border-radius: 50%;
+}
+
+.viewcomm .commnamedesc {
+	display: flex;
+	flex-direction: column;
+	row-gap: 10px;
+}
+
+.commnamedesc .commname{
+	font-size: 40px;
+}
+
+.commnamedesc .commdesc{
+	width: 600px;
+	font-weight: 500;
+}
+
+/* Styles for View Profile and Edit Profile */
+.viewprof {
+	padding: 50px;
+	padding-bottom: 0;
+	
+	display: flex;
+	flex-direction: column;
+}
+
+.viewprof .profpanel {
+	border-bottom-style: solid;
+	border-bottom-color: #9FA0A0;
+	padding-bottom: 20px;
+	
+	display: flex;
+	justify-content: space-between;
+	align-items: end;
+}
+
+.profpanel a {
+	border-radius: 15px;
+	border-style: none;
+	background-color: #0C4F47;
+	color: white;
+	padding: 10px;
+	width: 90px;
+	text-align: center;
+}
+
+.profpanel a:hover {
+	background-color: #11695e;
+}
+
+.viewprof .userinfo {	
+	display: flex;
+	align-items: end;
+	column-gap: 20px;
+}
+
+.viewprof .userpic{
+	border: solid;
+	width: 100px;
+	height: 100px;
+	border-radius: 50%;
+}
+
+.viewprof .usernameid {
+	display: flex;
+	flex-direction: column;
+	row-gap: 10px;
+}
+
+.usernameid .username{
+	font-size: 40px;
+}
+
+.usernameid .userid{
+	width: 600px;
+	font-weight: 500;
+}
+
+.viewprof .userdetails {
+	padding: 10px 0;
+}
+
+.userdetails .userdatejoin, .userdetails .userdesc{
+	font-weight: 500;
+}
+
+.viewprof .editinfo {
+	display: flex;
+	align-items: end;
+	column-gap: 20px;
+}
+
+.viewprof .editusernameid {
+	display: flex;
+	flex-direction: column;
+	row-gap: 10px;
+}
+
+.cplabel {
+	font-weight: 700;
+}
+
+.editusernameid .username{
+	font-family: 'League Spartan';
+	font-weight: 500;
+	font-size: 40px;
+	
+	padding: 10px;
+	padding-bottom: 0px;
+	border-radius: 15px;
+	border: 1px solid #ccc;
+}
+
+.editusernameid .userid{
+	font-family: 'League Spartan';
+	width: 600px;
+	font-weight: 500;
+	
+	padding: 5px;
+	padding-left: 10px;
+	padding-bottom: 0px;
+	border-radius: 15px;
+	border: 1px solid #ccc;
+}
+
+.userdetails .editdesc {
+	width: 100%;
+	height: 100px;
+	padding: 10px;
+	margin: 10px 0;
+	border: 1px solid #ccc;
+	border-radius: 15px;
+	box-sizing: border-box;
+	resize: vertical; 
+}
+
+.userdetails .editbutton {
+	background-color: #0C4F47;
+	color: white;
+	padding: 10px 20px;
+	border: none;
+	border-radius: 15px;
+	cursor: pointer;
+}
+
+.userdetails .editbutton:hover {
+	background-color: #11695e;
+}	
+
+.useractions {
+	display: flex;
+	align-items: center;
+	column-gap: 10px;
+	margin-left: 50px;
+}
+
+.useractions button {
+	border-radius: 15px;
+	border-style: none;
+	background-color: #0C4F47;
+	color: white;
+	padding: 10px;
+	width: 90px;
+}
+
+.useractions button:hover {
+	background-color: #11695e;
+}
+
+#viewusercomment {
+	padding: 20px 50px;
+	
+	display: flex;
+	flex-direction: column;
+}
+
+#viewuserpost {
+	display: block;
+}
+
+#viewusercomment {
+	display: none;
+}
+
+/* Styles for Creating Post and Editing Post */
+.createpost {
+	text-align: left;
+	margin-left: 50px;
+	margin-right: 50px;
+	margin-bottom: 20px;
+}
+
+.createpost h1 {
+    margin-bottom: 20px;
+}
+
+.createpost label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.createpost .postcomm,.createpost .posttitle,.createpost .postcontent {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 15px;
+    box-sizing: border-box;
+}
+
+.createpost .postcontent {
+    height: 100px;
+    resize: vertical;
+}
+
+.createpost .postbutton {
+    background-color: #0C4F47;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    margin-top: 15px;
+}
+
+.createpost .postbutton:hover {
+	background-color: #11695e;
+}
+
+/* Styles for Viewing Post and Comments */
+.postbox {
+	padding: 50px;
+	padding-bottom: 0;
+	padding-left: 100px;
+	padding-right: 100px;
+	
+	display: flex;
+	flex-direction: column;
+}
+
+input.cbox {
+	width: 90%;
+	height: 40px;
+	padding: 10px;
+	margin: 20px 0;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	box-sizing: border-box;
+	float: left;
+}
+
+button.submitcomment {
+	width: 10%;
+	height: 40px;
+    background-color: #0C4F47;
+    color: white;
+	margin: 20px 0;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.submitcomment:hover {
+    background-color: #11695e;
+}
+
+.commentcontainer {
+	padding-left: 100px;
+	padding-right: 100px;
+	padding-bottom: 50px;
+}
+
+#cc1 {
+	margin-top: -40px;
+}
+
+.commentsec {
+	margin-left: 50px;
+	margin-top: 30px;
+	display: flex;
+	flex-direction: column;
+	row-gap: 50px;
+}
+
+.replyform {
+	margin-top: -20px;
+}
+
+.comment{	
+	display: flex;
+	flex-direction: column;
+	row-gap: 20px;
+}
+
+.comment .posttext {
+	font-weight: 500;
+	text-decoration: none;
+	color: black;
+}
+
+.commentbox {
+	padding: 50px;
+	padding-left: 100px;
+	padding-right: 100px;
+	
+	display: flex;
+	flex-direction: column;
+}
+
+.editcomment {
+	width: 100%;
+	height: 100px;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 15px;
+    box-sizing: border-box;
+}
+
+/* Styles for Sign-in Page (Log-in and Register) */
+.signinbg {
+	background-image: url("/pictures/background.png");
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-position: center;
+	background-size: cover;
+}
+
+.signinpanel {
+	background-color: #00713D;
+	border-radius: 14px;
+	padding: 20px;
+	text-align: center;
+	margin-top: 30px;
+	
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 400px;
+}
+
+#regcontent, #logincontent {
+	background-color: white;
+	padding: 20px;
+	border-radius: 10px;
+}
+
+/* Sytles for Register Page */
+#regcontent .tbox {
+	width: 100%;
+	padding: 10px;
+	margin: 10px 0;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	box-sizing: border-box;
+}
+
+#regcontent p, label {
+	font-weight: 500;
+}
+
+#regcontent button[type="submit"] {
+	background-color: #00713D;
+	color: white;
+	padding: 10px 20px;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+/* Sytles for Log-in Page */
+#logincontent {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+#logincontent p {
+	font-weight: 500;
+}
+
+#logincontent .tbox {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+#logincontent button[type="submit"] {
+  background-color: #00713D;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.attachment {
+	width: 378px;
+	height: 378px;
+	object-fit: cover;
+}

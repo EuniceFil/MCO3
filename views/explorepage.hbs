@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Explore Page</title>
+	<link rel="icon" type="image/png" href="/pictures/logo.png">
+	<link rel="stylesheet" href="/css/design.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&display=swap">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,1,0&icon_names=search" />
+</head>
+
+<body>
+	<!-- Header -->
+    <header>
+        <div class="logoname">
+            <img class="logo" src="/pictures/logo.png" alt="AnimoMeet Logo">
+            <h1 class="sitetext">AnimoMeet</h1>
+        </div>
+        <form action="/search" method="GET">
+            <div class="searchbar">
+                <span class="searchicon material-symbols-outlined">search</span>
+                <input class="searchinput" type="search" id="searchQuery" name="searchQuery" placeholder="Search AnimoMeet">
+            </div>
+        </form>
+        <div class="options">
+            <a class="create" href="/create-post">Create</a>
+            <div class="profdd">
+                <img class="profile" src="/pictures/account.png">
+                <div class="profoptions">
+                    <a href="/profile">Profile</a>
+                    {{#if user}}
+                        <a href="/logout">Log-out</a>
+                    {{else}}
+                        <a href="/login">Log-in</a>
+                    {{/if}}
+                </div>
+            </div>
+        </div>
+    </header>
+	
+	<!-- Side Panel -->
+	<aside>
+		<!-- Navigation -->
+		<nav>
+			<h1 class="navitext">Navigation Bar</h1>
+			<div class="navcontainer">
+				<a class="navbox" href="/">
+					<img src="/pictures/home.png" alt="home Logo">
+					<div>Home</div>
+				</a>
+				<a class="navbox" href="/trending">
+					<img src="/pictures/trending.png" alt="trending Logo">
+					<div>Trending</div>
+				</a>
+				<a class="navbox" href="/explore">
+					<img src="/pictures/explore.png" alt="explore Logo">
+					<div>Explore</div>
+				</a>
+			</div>
+		</nav>
+		
+		<!-- Community -->
+        <div class="communities">
+            <h1 class="commtext">Communities</h1>
+            <div class="commcontainer">
+                {{#each communities}}
+                    <a class="commbox" href="/community/{{this.community_name}}">
+                        <img src="{{this.community_pfp}}" alt="{{this.community_name}}">
+                        <div>a/{{this.community_name}}</div>
+                    </a>
+                {{/each}}
+            </div>
+        </div>
+	</aside>
+	
+	<!-- Main Content -->
+    <main class="feedpage">
+        <div class="explore">Explore Communities</div>
+        <div class="expcontainer">
+            {{#each communities}}
+                <div class="expbox">
+                    <div class="commpicname">
+                        <img class="commpic" src="{{this.community_pfp}}" alt="{{this.community_name}}">
+                        <h1>a/{{this.community_name}}</h1>
+                    </div>
+                    <div class="commdesc">{{this.community_desc}}</div>
+                    <br><a class="joinbutton" href="/community/{{this.community_name}}">See Community</a>
+                </div>
+            {{/each}}
+        </div>
+    </main>
+</body>
+</html>
