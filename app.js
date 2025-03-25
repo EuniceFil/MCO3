@@ -1125,7 +1125,7 @@ hbs.registerPartials(__dirname + "/views/partials");
 app.set('view engine','hbs');
 
 // Start the server
-const PORT = 3000;
+const PORT = process.env.PORT;
 app.listen(PORT, () => {
-    console.log('Listening to port 3000');
+    console.log('Deploying...');
 });
