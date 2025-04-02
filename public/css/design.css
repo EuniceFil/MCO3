@@ -93,7 +93,7 @@ header {
 	column-gap: 15px;
 }
 
-.create {
+.about, .create {
 	background-color: #0C4F47;
 	font-size: 30px;
 	color: white;
@@ -101,7 +101,7 @@ header {
 	border-radius: 28px;
 }
 
-.create:hover {
+.about:hover, .create:hover {
 	background-color: #11695e;
 }
 
@@ -280,6 +280,13 @@ aside {
 .commbox div {
 	font-weight: 500;
 	margin-top: 5px;
+}
+
+/* Styles for About Page*/
+.aboutme {
+	padding: 50px;
+	padding-left: 100px;
+	padding-right: 100px;
 }
 
 /* Styles for Main Content (Main, Trending, Explore) */
@@ -480,6 +487,10 @@ aside {
 .commnamedesc .commdesc{
 	width: 600px;
 	font-weight: 500;
+}
+
+.nopost{
+	text-align: center;
 }
 
 /* Styles for View Profile and Edit Profile */
@@ -871,4 +882,12 @@ button.submitcomment {
 	width: 378px;
 	height: 378px;
 	object-fit: cover;
+}
+
+.error {
+	color: red;
+	font-size: 14px;
+	font-weight: bold;
+	text-align: center;
+	margin-bottom: 10px;
 }
