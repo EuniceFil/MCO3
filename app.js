@@ -1,3 +1,4 @@
+require("dotenv").config(); // Load environment variables
 const express = require("express");
 const session = require("express-session");
 const cookieParser = require("cookie-parser");
@@ -7,8 +8,21 @@ const app = express();
 const hbs = require('hbs');
 
 // mongoose connection
-const mongoose = require('mongoose')
-mongoose.connect('mongodb://localhost/AnimoMeetDB')
+const mongoose = require("mongoose");
+
+const uri = process.env.MONGODB_URI
+
+mongoose.connect(uri, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+})
+    .then(async () => {
+        console.log("✅ Connected to MongoDB Atlas!");
+
+        // Insert communities **only after** MongoDB is connected
+        await initializeCommunities();
+    })
+    .catch(err => console.error("MongoDB Connection Error:", err));
 
 /* For file uplods */
 const fileUpload = require('express-fileupload')
@@ -97,17 +111,20 @@ const communities = [
         community_pfp: "/pictures/education.png"
     }
 ];
-
 // Insert communities into MongoDB only if they don’t already exist
 async function initializeCommunities() {
-    const communitiesFound = await Community.find();
-    if (communitiesFound.length === 0) {
-        await Community.insertMany(communities);
-        console.log("Inserted default communities into MongoDB!");
+    try {
+        const count = await Community.countDocuments();
+        if (count === 0) {
+            await Community.insertMany(communities);
+            console.log("Inserted default communities into MongoDB!");
+        } else {
+            console.log("Communities already exist. Skipping insertion.");
+        }
+    } catch (err) {
+        console.error("Error initializing communities:", err);
     }
 }
-
-initializeCommunities();
 
 // --- Community Page --- //
 
@@ -1124,8 +1141,9 @@ hbs.registerHelper("formatDate", function (date) {
 hbs.registerPartials(__dirname + "/views/partials");
 app.set('view engine','hbs');
 
+
 // Start the server
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 3000; // Default to 3000 if not set
 app.listen(PORT, () => {
-    console.log('Deploying...');
+    console.log(`Server running on port ${PORT}`);
 });
