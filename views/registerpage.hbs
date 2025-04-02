@@ -22,17 +22,15 @@
 	<div class="signinpanel">
 		<div id="regcontent">
 			<h2>Register</h2>
+            <p>By continuing, you agree to our User Agreement and acknowledge that you understand the Privacy Policy.</p>
 
-			<!-- Flash messages for errors -->
             {{#if error_msg}}
                 <p class="error">{{error_msg}}</p>
             {{/if}}
 
-            <p>By continuing, you agree to our User Agreement and acknowledge that you understand the Privacy Policy.</p>
-
 			<!-- Updated form with Handlebars syntax -->
-			<form action="/register" method="POST">
-				<input type="checkbox" id="agreement" name="agreement" value="true">
+            <form id="register-form" action="/register" method="POST">
+            <input type="checkbox" id="agreement" name="agreement" value="true">
 				<label for="agreement">I agree to the User Agreement and Privacy Policy</label><br><br>
 
 				<input class="tbox" type="email" id="email" name="email" value="{{formData.email}}" placeholder="Email"><br>
@@ -45,6 +43,7 @@
 			<p>Have an account? <a href="/login">Log in</a></p>
 		</div>
 	</div>
+    <script src="/js/script.js"></script>
 </main>
 </body>
 </html>
