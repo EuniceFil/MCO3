@@ -100,8 +100,8 @@ const communities = [
 
 // Insert communities into MongoDB only if they don’t already exist
 async function initializeCommunities() {
-    const count = await Community.countDocuments();
-    if (count === 0) {
+    const communitiesFound = await Community.find();
+    if (communitiesFound.length === 0) {
         await Community.insertMany(communities);
         console.log("Inserted default communities into MongoDB!");
     }
