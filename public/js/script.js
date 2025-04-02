@@ -60,3 +60,62 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 });
 
+document.addEventListener("DOMContentLoaded", function () {
+    const loginForm = document.getElementById("login-form");
+    const registerForm = document.getElementById("register-form");
+
+    if (loginForm) {
+        loginForm.addEventListener("submit", function (event) {
+            const email = document.getElementById("email").value.trim();
+            const password = document.getElementById("password").value.trim();
+            let errorMessage = "";
+
+            if (!email || !password) {
+                errorMessage = "Please fill in all fields.";
+            }
+
+            if (errorMessage) {
+                event.preventDefault(); // Prevent form submission
+                displayError(errorMessage); // Show error message
+            }
+        });
+    }
+
+    if (registerForm) {
+        registerForm.addEventListener("submit", function (event) {
+            const email = document.getElementById("email").value.trim();
+            const password = document.getElementById("password").value.trim();
+            const confirmPassword = document.getElementById("confirmPassword").value.trim();
+            const agreement = document.getElementById("agreement").checked;
+            let errorMessage = "";
+
+            // Validation checks
+            if (!email || !password || !confirmPassword) {
+                errorMessage = "All fields are required.";
+            } else if (password !== confirmPassword) {
+                errorMessage = "Passwords do not match.";
+            } else if (!agreement) {
+                errorMessage = "You must agree to the terms.";
+            }
+
+            if (errorMessage) {
+                event.preventDefault(); // Prevent form submission
+                displayError(errorMessage);
+            }
+        });
+    }
+
+    function displayError(message) {
+        let errorBox = document.getElementById("error-msg");
+
+        if (!errorBox) {
+            errorBox = document.createElement("p");
+            errorBox.id = "error-msg";
+            errorBox.classList.add("error");
+            const form = document.querySelector("form");
+            form.insertBefore(errorBox, form.firstChild);
+        }
+
+        errorBox.textContent = message;
+    }
+});
